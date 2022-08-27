@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.xionghuihui.infrastructure</groupId>
+    <artifactId>kit-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <modules>
+        <module>kit-common</module>
+        <module>kit-spring</module>
+        <module>kit-dependencies</module>
+    </modules>
+
+    <packaging>pom</packaging>
+    <description>基础的一些工具</description>
+
+    <properties>
+        <revision>1.0.0-SNAPSHOT</revision>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.source.plugin>2.1.1</maven.source.plugin>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <!-- 推送远程仓库打包源码 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.source.plugin}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <generateBackupPoms>false</generateBackupPoms>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- mvn部署仓库配置 -->
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <name>default</name>
+            <url>https://packages.aliyun.com/maven/repository/2133234-release-AmoS8T</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <name>default</name>
+            <url>https://packages.aliyun.com/maven/repository/2133234-snapshot-FpvoBh</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>

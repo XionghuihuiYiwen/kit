@@ -1,0 +1,10 @@
+{"properties": [
+    {
+      "name": "kit.oss.active",
+      "type": "java.lang.String",
+      "defaultValue": [
+        "minio"
+      ],
+      "description": "witch oss middleware use."
+    }
+]}
